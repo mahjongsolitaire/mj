@@ -1,0 +1,55 @@
+@import "../../style/globals";
+
+:host {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+
+	.choose-buttons {
+		border-top: 1px solid var(--card-layout-color-border);
+		padding-top: 10px;
+		display: flex;
+		flex-flow: row nowrap;
+		align-items: flex-end;
+
+		@include respond-to-height(small-down) {
+			padding-top: 4px;
+		}
+
+		.start-links {
+			text-align: right;
+			display: inline-block;
+
+			.link {
+				color: var(--input-text-color);
+				margin-left: 8px;
+				text-decoration: none;
+				padding: 8px 12px;
+			}
+		}
+
+		.generator, .mode {
+			flex: 1;
+
+			label {
+				display: block;
+				margin-bottom: 2px;
+			}
+
+			select {
+				width: 100%;
+			}
+		}
+
+		.mode {
+			margin-left: 8px;
+			max-width: 30%;
+		}
+	}
+
+}
+

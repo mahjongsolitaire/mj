@@ -1,0 +1,8 @@
+@import "./style/globals";
+
+:host {
+	display: block;
+	width: 100%;
+
+	@include full-height;
+}

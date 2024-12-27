@@ -1,0 +1,32 @@
+<div class="tiles-content">
+	@for (suit of TILES_INFOS; track suit) {
+		@for (group of suit.groups; track group) {
+			<div class="tiles-section tiles-section-{{group.tiles.length}}">
+				<div class="tiles-title">{{ group.name | translate }}</div>
+				<div class="tiles-set tiles-set-{{group.tiles.length}}">
+					@for (tile of group.tiles; track tile; let i = $index) {
+						<div class="tile">
+							<div>
+								<app-tile [tile]="tile" [imageSet]="tileset" [kyodaiUrl]="kyodaiUrl" [index]="i" [isDark]="isDark"></app-tile>
+							</div>
+							<div [innerHtml]="tile | translate"></div>
+						</div>
+					}
+				</div>
+			</div>
+		}
+	}
+</div>
+<div class="tiles-header">
+	<form>
+		<select (change)="tileset = $any($event.target).value">
+			@for (imageset of sets; track imageset; let i = $index) {
+				<option [value]="imageset.id" [selected]="tileset === imageset.id">{{ imageset.name }}</option>
+			}
+		</select>
+		<label><input type="checkbox" [checked]="isDark" (change)="isDark = !isDark;">{{ 'TILES_DARK'|translate }}</label>
+	</form>
+	<div class="tiles-reference">
+		<a rel="noopener" target="_blank" href="{{'READ_MORE_WIKIPEDIA_URL' | translate}}">{{ 'READ_MORE_WIKIPEDIA' | translate }}</a>
+	</div>
+</div>

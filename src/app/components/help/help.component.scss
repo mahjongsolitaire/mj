@@ -1,0 +1,134 @@
+@import "../../style/globals";
+
+:host {
+	display: flex;
+	flex-flow: row wrap;
+	flex: 1;
+	overflow-y: auto;
+
+	h2 {
+		padding-bottom: 3px;
+		margin: 10px 0 4px;
+		font-weight: bold;
+		border-bottom: 1px solid var(--main-bg-color-lt);
+		font-size: 1.1em;
+	}
+
+	> div {
+		flex: 1;
+		margin-right: 10px;
+	}
+
+	.help, .license {
+		padding-right: 10px;
+	}
+
+	.help {
+		p {
+			margin-bottom: 4px;
+		}
+	}
+
+	.license {
+		display: flex;
+		flex-direction: column;
+
+		.license-list {
+			> div {
+				display: flex;
+				flex-direction: row;
+			}
+		}
+
+		.name {
+			min-width: 40%;
+			max-width: 40%;
+		}
+
+		.license-list-tilesets {
+			columns: 2;
+
+			> div {
+				justify-content: space-between;
+			}
+		}
+	}
+
+	.keyboard {
+		.keyboard-list {
+			padding: 0;
+			list-style: none;
+			columns: 2;
+
+			li {
+				break-inside: avoid;
+				margin-bottom: 14px;
+			}
+
+			.func {
+				margin-top: 8px;
+				font-size: 0.8em;
+				display: block;
+			}
+
+			.name {
+				vertical-align: middle;
+			}
+
+			.icon, i {
+				margin-left: 8px;
+				vertical-align: middle;
+			}
+
+			.key {
+				font-weight: bold;
+				text-transform: uppercase;
+				padding-left: 4px;
+				padding-right: 4px;
+				border: 2px solid #ddd;
+				border-radius: 6px;
+				min-height: 20px;
+				min-width: 28px;
+				font-size: 0.7em;
+				vertical-align: top;
+				display: inline-block;
+				letter-spacing: 1px;
+				background: black;
+				color: #ddd;
+				box-shadow: 0 5px 0 0 rgb(0 0 0 / 100%);
+				text-align: center;
+			}
+
+			@include respond-to(medium-down) {
+				columns: 1;
+			}
+		}
+	}
+
+	@include respond-to(large-down) {
+		flex-flow: column nowrap;
+
+		> div {
+			width: 100%;
+		}
+
+		.top {
+			display: flex;
+			flex-direction: row;
+
+			> div {
+				flex: 1;
+			}
+		}
+	}
+
+	@include respond-to(medium-down) {
+		.top {
+			flex-flow: column nowrap;
+		}
+
+		.help, .license {
+			width: 100%;
+		}
+	}
+}

@@ -1,0 +1,385 @@
+@import "../../style/globals";
+
+:host {
+	display: flex;
+	flex-flow: column nowrap;
+	width: 100%;
+	background-color: var(--main-bg-color);
+
+	@include full-height;
+
+	&.dkgreen {
+		--main-bg-color: #19262e;
+		--main-bg-color-lt: #22353f;
+		--main-bg-color-dk: #142026;
+	}
+
+	&.dkblue {
+		--main-bg-color: #001552;
+		--main-bg-color-lt: #22353f;
+		--main-bg-color-dk: #142026;
+		--main-text-color: #fff;
+		--main-text-color-lt: #ffe9c0;
+		--main-text-color-dk: #dcdbdb;
+		--dialog-text-color: #001552;
+	}
+
+	&.ltblue {
+		--main-bg-color: #34385a;
+		--main-bg-color-lt: #22353f;
+		--main-bg-color-dk: #142026;
+		--main-text-color: #fff;
+		--main-text-color-lt: #ffe9c0;
+		--main-text-color-dk: #dcdbdb;
+		--dialog-text-color: #34385a;
+	}
+
+	&.white {
+		--main-bg-color: #fff;
+		--main-bg-color-lt: #b9b9b9;
+		--main-bg-color-dk: #f6f5f5;
+		--main-text-color: #000;
+		--main-text-color-lt: #646464;
+		--main-text-color-dk: #8c8c8c;
+		--dialog-text-color: #000;
+	}
+
+	&.brown {
+		--main-bg-color: brown;
+		--main-bg-color-lt: #ad2d2d;
+		--main-bg-color-dk: #982626;
+		--main-text-color: #fff;
+		--main-text-color-lt: #ffe9c0;
+		--main-text-color-dk: #dcdbdb;
+		--dialog-text-color: #601616;
+	}
+
+	&.black {
+		--main-bg-color: #000;
+		--main-bg-color-lt: #3a3a3a;
+		--main-bg-color-dk: #171717;
+	}
+
+	.controls {
+		min-width: 170px;
+
+		.feature {
+			display: none;
+
+			&.enabled {
+				display: unset;
+			}
+		}
+
+		.ctrl {
+			display: inline-block;
+			color: var(--main-text-color);
+			user-select: none;
+
+			.link {
+				text-decoration: none;
+				font-weight: normal;
+				color: var(--main-text-color);
+				margin-left: 16px;
+				padding: 0.2em 0.8em;
+
+				i {
+					margin-right: 2px;
+				}
+
+				&:hover {
+					color: var(--main-text-color-lt);
+				}
+
+				&[disabled] {
+					color: var(--main-text-color-dk);
+				}
+
+				@include respond-to(tiny-up) {
+					margin-left: 10px;
+				}
+			}
+
+			.button {
+				background-color: transparent;
+				background-image: none;
+				border-color: transparent;
+				border-radius: 3px;
+
+				&:hover {
+					border-color: var(--main-bg-color-lt);
+				}
+			}
+
+			&.ctrl-name {
+				font-weight: 600;
+				cursor: pointer;
+
+				span.name {
+					margin-left: 6px;
+				}
+			}
+
+			.inactive {
+				color: var(--main-text-color-dk);
+
+				&:hover {
+					color: var(--main-text-color-dk);
+				}
+			}
+
+			&.ctrl-game {
+				float: right;
+			}
+
+			&.ctrl-time {
+				cursor: default;
+				float: right;
+				padding-right: 12px;
+
+				.text {
+					margin-right: 26px;
+					font-variant-numeric: lining-nums;
+				}
+
+				small {
+					margin-right: 6px;
+				}
+
+				.time {
+					min-width: 98px;
+					display: inline-block;
+					text-align: right;
+					font-variant-numeric: slashed-zero tabular-nums;
+				}
+			}
+
+			&.ctrl-stats {
+				cursor: default;
+
+				.label {
+					margin-left: 10px;
+				}
+			}
+
+		}
+
+		@include respond-to(medium-up) {
+			font-size: $base-font-size * 1.2;
+		}
+
+		@include respond-to(large-up) {
+			font-size: $base-font-size * 1.3;
+		}
+
+		@include respond-to(huge-up) {
+			font-size: $base-font-size * 1.6;
+		}
+
+		@include respond-to(jumbo-up) {
+			font-size: $base-font-size * 2.3;
+		}
+
+		@include respond-to(ludicrous-up) {
+			font-size: $base-font-size * 4;
+		}
+
+		@include respond-to(large-down) {
+			font-size: $base-font-size * 1.1;
+
+			.ctrl .link {
+				padding: 0.2em;
+			}
+		}
+
+		@include respond-to(medium-down) {
+			span.label {
+				display: none;
+			}
+		}
+
+		@include respond-to(small-down) {
+			padding: 0 6px;
+
+			.ctrl .link {
+				margin-left: 2px;
+				padding: 0.1em;
+			}
+
+			font-size: 24px;
+		}
+
+		@include respond-to(tiny-down) {
+			.ctrl .link {
+				padding: 0.2em;
+				margin-left: 2px;
+			}
+
+			span.name {
+				display: none;
+			}
+
+			.ctrl {
+				span:first-of-type {
+					margin-left: 0;
+				}
+			}
+		}
+
+		@include respond-to(pico-down) {
+			font-size: $base-font-size * 1.1;
+
+			span.name {
+				display: none;
+			}
+		}
+	}
+
+	.controls-top {
+		border-bottom: 1px solid var(--main-bg-color-lt);
+	}
+
+	.controls-bottom {
+		border-top: 1px solid var(--main-bg-color-lt);
+	}
+
+	.board {
+		display: flex;
+		flex-direction: row;
+		flex: 1;
+		overflow: hidden;
+	}
+
+	@include respond-to-horizontal-device(pad) {
+		flex-direction: row;
+
+		.controls {
+			.ctrl {
+				float: unset !important;
+				text-align: center;
+
+				.symbol, i {
+					font-size: 32px;
+				}
+
+				.link {
+					display: block;
+					margin-left: 0;
+					margin-bottom: 10px;
+					padding-left: 0;
+					padding-right: 0;
+				}
+
+				.feature {
+					display: none;
+
+					&.enabled {
+						display: block;
+					}
+				}
+
+			}
+		}
+
+		padding-left: 52px;
+		padding-right: 52px;
+
+		.controls-top {
+			min-width: unset;
+			max-width: 52px;
+			padding: 0;
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			justify-content: space-between;
+
+			.ctrl.ctrl-name {
+				display: flex;
+				flex-direction: column;
+			}
+
+			.ctrl.ctrl-game {
+				display: flex;
+				flex-direction: column-reverse;
+
+				span:first-of-type {
+					margin-bottom: 2px;
+				}
+			}
+
+			span.name {
+				display: none;
+			}
+
+			span.label {
+				display: none;
+			}
+		}
+
+		.controls-bottom {
+			min-width: 98px;
+			max-width: 98px;
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			position: absolute;
+			right: 0;
+			padding: 0;
+			align-items: flex-end;
+
+			.ctrl {
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				text-align: right;
+
+				.label {
+					margin-left: 0;
+				}
+			}
+
+			.ctrl.ctrl-time {
+				text-align: right;
+				justify-content: flex-end;
+				padding-right: 6px;
+				padding-left: 6px;
+
+				.time {
+					text-align: right;
+					min-width: 0;
+				}
+
+				.text {
+					text-align: right;
+					margin-right: 0;
+					margin-bottom: 8px;
+
+					small {
+						display: block;
+						margin-right: 0;
+						line-height: 0.9em;
+					}
+				}
+			}
+
+
+		}
+	}
+
+	@include respond-to-horizontal-device(phone) {
+		.controls .ctrl .link {
+			margin-bottom: 0;
+		}
+
+		.controls {
+			.ctrl {
+				.symbol, i {
+					font-size: 24px;
+				}
+			}
+		}
+
+	}
+}
